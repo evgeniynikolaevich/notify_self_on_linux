@@ -6,27 +6,25 @@
 using namespace std;
 
 
-void notifier(){
+void notifier(int* time_for_work){
     char x;
+    char temp;
     cout << "Press Enter to Continue";
-   char temp;
     cin.get(temp);
-    int counter =0;
     if (temp){
-    while(counter != 1560){
-        counter++;
+    while(*time_for_work != 0){
+        *time_for_work++;
         std::this_thread::sleep_for(std::chrono::milliseconds(60));
-        cout<<counter<<endl;
-
-    }
+        cout<<&time_for_work<<endl;
+        }
     }
 }
 
 
 
 int main(){
-
-    notifier();
+    int time_for_work = 1560;
+    notifier(&time_for_work);
 
     return 0;
 }
